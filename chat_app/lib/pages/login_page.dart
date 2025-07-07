@@ -4,7 +4,7 @@ import 'package:chat_app/components/my_textfield.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
-  // textfiel controllers
+  // textfield controllers
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -19,25 +19,23 @@ class LoginPage extends StatelessWidget {
 
     // try login
     try {
+      //  get text from email and password controllers
       await authService.signInWithEmailAndPassword(
-        _emailController.text.trim(),
-         _passwordController.text.trim(),
+        _emailController.text,
+        _passwordController.text,
       );
     } 
-    
-    catch (e) {
       // handle error
+    catch (e) {
       showDialog(
-        context: context, 
+        context: context,
         builder: (context) => AlertDialog(
           title: Text(e.toString()),
-        )
-        );
-      print("Login failed: $e");
+          ),
+      );
+      // print("Login failed: $e");
       // You can show a snackbar or dialog to inform the user about the error
     }
-
-    // ccatch any errors
   }
 
   @override
