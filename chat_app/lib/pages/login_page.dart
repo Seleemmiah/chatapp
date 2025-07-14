@@ -20,18 +20,16 @@ class LoginPage extends StatelessWidget {
     // try login
     try {
       //  get text from email and password controllers
-      await authService.signInWithEmailAndPassword(
+      await authService.signInWithEmailPassword(
         _emailController.text,
         _passwordController.text,
       );
-    } 
-      // handle error
+    }
+    // handle error
     catch (e) {
       showDialog(
         context: context,
-        builder: (context) => AlertDialog(
-          title: Text(e.toString()),
-          ),
+        builder: (context) => AlertDialog(title: Text(e.toString())),
       );
       // print("Login failed: $e");
       // You can show a snackbar or dialog to inform the user about the error
